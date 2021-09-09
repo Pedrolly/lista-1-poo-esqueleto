@@ -10,10 +10,11 @@ import javafx.stage.Stage;
 
 public class ScenePrincipal {
 
-    private Button btnTeste, btnCalcCoefLinear; //Button representa botoes
+    private Button btnTeste,btnCalcCoefLinear,btnteste1; //Button representa botoes
     private Label labelTeste1; //Label representam rótulos
-    private TextField textField1, textField2; //TextField Representam áreas de texto
-
+    private TextField textField1, textField2,textField3; //TextField Representam áreas de texto
+    Reta reta1= new Reta();
+    double resp;
     public void criaScenePrincipal(Stage stage){
 
         //Criando os labels para os pontos e os campos de texto para os dados
@@ -28,19 +29,25 @@ public class ScenePrincipal {
         //Agora vamos criar a area que mostrará o que foi digitado
         textField2 = new TextField();
         textField2.setEditable(false);//vamos deixar false para apenas mostrar texto
-        textField2.setText("Sua frase aparecerá aqui");
-
+        textField2.setText("entre com o primeiro ponto");
+        textField3 = new TextField();
+        textField3.setText("entre com o segundo");
         //Criamos o botão
         btnTeste = new Button("Executar Ação");
+
+        btnteste1=new Button();
         //Criamos a ação que o botão responderá as ser pressionado
         btnTeste.setOnAction(evento -> {
+
             //Aqui dentro é a ação que será executado ao pressionar o botão
             textField2.setText(textField1.getText());//Acessamos o componente textField1, pegamos o texto e colocaos em textField2
+        reta1.coeficiente();
+        reta1.linear(resp);
         });
 
         //VBox é usada para agrupar elementos verticalmente
         //No construtor passamos todos os elementos que serão agrupados, que podem ser outros grupos
-        VBox layoutFinal = new VBox(grupoHorizontal, textField2,btnTeste);//Aqui vamos agrupar verticalmente o grupo (Label + Texto) o Botao e A area que aparecer o texto digitado
+        VBox layoutFinal = new VBox(grupoHorizontal, textField2,btnTeste,textField3);//Aqui vamos agrupar verticalmente o grupo (Label + Texto) o Botao e A area que aparecer o texto digitado
         //Criamos a Scene
         Scene scene = new Scene(layoutFinal, 300 , 200);
 
